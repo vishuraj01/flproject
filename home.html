@@ -1,0 +1,461 @@
+
+<!-- templates/home.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paramount Events</title>
+
+<!-- Add this link in the head of your HTML file -->
+<link rel="stylesheet" type="text/css" href="/static/styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<!-- Add this link in the head of your HTML file -->
+<link rel="stylesheet" type="text/css" href="/static/styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<!-- Add this link in the head of your HTML file -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<!-- Include Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<!-- Include Font Awesome CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1e5799, #2989d8, #207cca, #7db9e8);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            padding: 15px 20px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .navigation-links {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navigation-links a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 1.2em;
+            margin: 0 20px;
+            transition: color 0.3s;
+        }
+
+        .navigation-links a:hover {
+            color: #3498db;
+        }
+
+        
+        .home-container {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            text-align: center;
+            background: url('/static/image03.jpg') center/cover no-repeat fixed;
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+        }
+
+
+        .cta-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            opacity: 0;
+            animation: fade-in 1s forwards;
+            max-width: 600px;
+            margin: 0 auto;
+            z-index: 1;
+        }
+
+        .cta-container h2 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .cta-button {
+            padding: 12px 20px;
+            background-color: #3498db;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 1.5em;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #2980b9;
+        }
+
+        .testimonials-container {
+            background-color: #333;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .testimonial {
+            max-width: 600px;
+            margin: 0 auto;
+            color: #fff;
+        }
+
+        .testimonial p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .footer {
+            background-color: #222;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .footer p {
+            margin: 0;
+            color: #fff;
+            font-size: 1.2em;
+        }
+
+           /* Hero Section Styles */
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: url('C:\Users\gg\Desktop\flask_project\static\images\image03.jpg') center/cover no-repeat; /* Replace with your image URL */
+            color: #fff;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-section h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+        }
+
+        .hero-section p {
+            font-size: 1.5em;
+            margin-bottom: 40px;
+        }
+        
+          /* Testimonials Carousel Styles */
+        .testimonials-carousel {
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .testimonial-card {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            margin: 0 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s, transform 0.5s;
+        }
+
+        .testimonial-card.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        
+        /* Scroll Button Styles */
+        .scroll-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 1001;
+        }
+
+        .scroll-button:hover {
+            background-color: #2980b9;
+        }
+
+        /* Additional Styling */
+        .section-title {
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            color: #3498db;
+        }
+
+        .subtle-text {
+            font-size: 1.1em;
+            color: #ccc;
+        }
+
+        /* Smooth scroll transition */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .feature-section {
+            background-color: #222;
+            color: #fff;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 4em;
+            color: #3498db;
+            margin-bottom: 20px;
+        }
+
+        .feature-title {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .feature-description {
+            font-size: 1.2em;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .gallery-section {
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .gallery-item {
+            margin-bottom: 20px;
+        }
+
+        .gallery-item img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .gallery-item img:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Your existing body content -->
+
+
+      <!-- Your existing body content -->
+
+    <!-- Feature Section -->
+    <div class="feature-section" id="features">
+        <div class="container">
+            <h2 class="section-title">Our Features</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <i class="fas fa-users feature-icon"></i>
+                    <h3 class="feature-title">Experienced Team</h3>
+                    <p class="feature-description">Our experienced team is dedicated to making your events
+                        extraordinary. We bring creativity and professionalism to every project.</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="fas fa-lightbulb feature-icon"></i>
+                    <h3 class="feature-title">Innovative Solutions</h3>
+                    <p class="feature-description">We provide innovative solutions tailored to your specific
+                        needs. From concept to execution, we ensure every detail is perfect.</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="fas fa-heart feature-icon"></i>
+                    <h3 class="feature-title">Passion for Excellence</h3>
+                    <p class="feature-description">Excellence is at the core of what we do. We are passionate
+                        about delivering events that exceed expectations and leave a lasting impression.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gallery Section -->
+    <div class="gallery-section" id="gallery">
+        <h2 class="section-title">Event Highlights</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="gallery-item">
+                    <img src="{{ url_for('static', filename='images/imageo1.jpg') }}" alt="Event Image 1">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="gallery-item">
+                    <img src="{{ url_for('static', filename='images/imageo2.jpg') }}" alt="Event Image 2">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="gallery-item">
+                    <img src="{{ url_for('static', filename='images/imageo3.jpg') }}.jpg" alt="Event Image 3">
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- navigation bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <!-- brand logo-->
+        <a class="navbar-brand" href="/">Paramount Events</a>
+        <!-- Toggle button for mobile navigation-->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Navigation links-->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/"><i class="fas fa-home"></i> Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about"><i class="fas fa-info-circle"></i> About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/events"><i class="fas fa-calendar-alt"></i> Events</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/services"><i class="fas fa-cogs"></i> Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/testimonials"><i class="fas fa-star"></i> Testimonials</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/contact"><i class="fas fa-envelope"></i> Contact</a>
+                </li>
+                
+                
+                    <!-- Display login link when not authenticated -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login"><i class="fas fa-sign-in-alt"></i> Login</a>
+                    </li>
+                
+
+            </ul>
+        </div>
+    </nav>
+        
+      <!-- Hero Section -->
+    <div id="home" class="hero-section">
+        <div class="cta-container">
+            <h1>Welcome to Paramount Events</h1>
+            <p>Your Premier Event Management Partner</p>
+            <a href="#testimonials" class="btn btn-primary btn-lg">See Our Testimonials</a>
+        </div>
+    </div>
+
+      <!-- Testimonials Carousel -->
+      <div id="testimonials" class="testimonials-carousel">
+        
+    </div>
+
+    <!-- footer -->
+    <div class="footer">
+        <p>&copy; 2023 Your Company. All rights reserved.</p>
+    </div>
+
+    <!-- scroll button-->
+    <div class="scroll-button" id="scrollButton" onclick="scrollToTop()">
+        Scroll Top
+    </div>
+
+      <!-- Include Bootstrap JS and jQuery -->
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UoBqUVnRc1d+riXoKR9R5kDaXclAJs6pD5ti8A8HfKstFOeOg4WdY76PVCmYl" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script>
+    <!-- Custom JavaScript for Scroll Button -->
+        function scrollToTop() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+
+        function showScrollButton() {
+            var scrollButton = document.getElementById('scrollButton');
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                scrollButton.style.opacity = '1';
+            } else {
+                scrollButton.style.opacity = '0';
+            }
+        }
+
+        window.onscroll = function () {
+            showScrollButton();
+        };
+    </script>
+      
+      <script>
+        // Testimonials Carousel Logic
+        var testimonials = document.querySelectorAll('.testimonial-card');
+        var index = 0;
+
+        function showTestimonial(index) {
+            testimonials.forEach(function (testimonial) {
+                testimonial.classList.remove('active');
+            });
+            testimonials[index].classList.add('active');
+        }
+
+        function nextTestimonial() {
+            index = (index + 1) % testimonials.length;
+            showTestimonial(index);
+        }
+
+        function prevTestimonial() {
+            index = (index - 1 + testimonials.length) % testimonials.length;
+            showTestimonial(index);
+        }
+
+        // Auto switch testimonials every 5 seconds
+        setInterval(nextTestimonial, 5000);
+    </script>
+
+</body>
+</html>

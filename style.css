@@ -1,0 +1,110 @@
+
+/* static/style.css */
+/* static/styles.css */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #1e5799, #2989d8, #207cca, #7db9e8);
+    color: #fff;
+    overflow-x: hidden;
+}
+
+
+/* static/styles.css */
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2980b9;
+    --background-gradient: linear-gradient(135deg, #1e5799, #2989d8, #207cca, #7db9e8);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background: var(--background-gradient);
+    color: #fff;
+    overflow-x: hidden;
+}
+
+.cta-button {
+    background-color: var(--primary-color);
+}
+
+.cta-button:hover {
+    background-color: var(--secondary-color);
+}
+
+
+
+/* static/styles.css */
+/* static/styles.css */
+.navigation-links a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.2em;
+    margin: 0 20px;
+    transition: color 0.3s, transform 0.3s;
+    transform-origin: bottom;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.navigation-links a:hover {
+    color: var(--primary-color);
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Add these styles to your existing CSS */
+
+/* Add these styles to your existing CSS */
+
+
+/* Add these styles to your existing CSS */
+
+
+/* ... existing styles ... */
+
+@media only screen and (max-width: 600px) {
+    /* Add styles for smaller screens */
+    body {
+        font-size: 14px;
+    }
+
+    /* Adjust other styles as needed */
+}
+
+
+/* ... (remaining styles) */
+
+
+.header {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 2;
+}
+
+.navigation-links {
+    display: flex;
+    align-items: center;
+}
+
+.navigation-links a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.home-container {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
